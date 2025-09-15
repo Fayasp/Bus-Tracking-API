@@ -11,4 +11,14 @@ class StationCreateSerializer(serializers.ModelSerializer):
         model = Station
         fields = ('name','lattitude','longitude')
 
+
+class BusListCreateSerializer(serializers.ModelSerializer):
+
+    name        = serializers.CharField(error_message = {"blank" : "Please enter  the bus name"})
+    bus_number  = serializers.FloatField()
+    route_name  = serializers.CharField(error_message = {"blank" : "Please enter  the route name"})
+
+    class Meta:
+        model = Bus
+        fields = ('name','bus_number','route_name')
         
