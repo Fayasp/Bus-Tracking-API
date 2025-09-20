@@ -26,3 +26,27 @@ class BusListCreateSerializer(serializers.ModelSerializer):
         model = Bus
         fields = ('name','bus_number','route_name')
         
+
+class busSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bus
+        fields = ('id','name','bus_number','route_name')
+
+class StationSimpleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Station
+        fields = ("id", "name", "lattitide", "longitude")
+
+class EventListCreateSerializer(serializers.ModelSerializer):
+        
+        class Meta:
+            model = Event
+            fields = ('bus','station','time_stamp')
+
+
+    
+
+        bus      = serializers.PrimaryKeyRelatedField(queryset= Bus.objects.all())
+        station  = serializers.PrimaryKeyRelatedField(query_set = Station.objects.all())
+
+        
